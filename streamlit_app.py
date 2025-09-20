@@ -8,7 +8,7 @@ def load_icon():
     return img
 
 st.set_page_config(
-    page_title="INTQ AI Chat Page",
+    page_title="TMT AI Chat Page",
     page_icon=load_icon(),  
     layout="centered",  
     initial_sidebar_state="auto"
