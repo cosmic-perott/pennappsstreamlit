@@ -1,16 +1,11 @@
 import streamlit as st
-from PIL import Image
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
-def load_icon():
-    img = Image.open("INTQ_pfp.png")
-    return img
 
 api = st.secrets.API
 st.set_page_config(
     page_title="TMT AI Chat Page",
-    page_icon=load_icon(),  
     layout="centered",  
     initial_sidebar_state="auto"
 )
@@ -97,7 +92,7 @@ for message in st.session_state.messages:
     if message['role'] == 'user':
         right_aligned_message(message['parts'])
     else:
-        st.chat_message(message['role'],avatar=load_icon()).markdown(message['parts'])
+        st.chat_message(message['role']).markdown(message['parts'])
 
 prompt = st.chat_input("Chat with TMT")
 if prompt:
@@ -107,6 +102,6 @@ if prompt:
     response = chat_session.send_message(prompt)
 
 
-    st.chat_message('assistant',avatar=load_icon()).markdown(response.text)
+    st.chat_message('assistant').markdown(response.text)
     st.session_state.message_history.append({"role": "assistant", "parts": response.text})
     st.session_state.messages.append({"role": "assistant", "parts": response.text})
