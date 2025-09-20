@@ -98,7 +98,7 @@ for message in st.session_state.messages:
     else:
         st.chat_message(message['role'],avatar=load_icon()).markdown(message['parts'])
 
-prompt = st.chat_input("Chat with INTQ")
+prompt = st.chat_input("Chat with TMT")
 if prompt:
     right_aligned_message(prompt)
     st.session_state.messages.append({'role': 'user', 'parts': prompt})
