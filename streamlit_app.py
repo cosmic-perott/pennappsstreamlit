@@ -88,7 +88,7 @@ def left_aligned_message(message):
     st.markdown(
         f'<div style="text-color:#000000;text-align: left; padding:10px; border-radius:16px;>{message}</div>'
     )
-st.title("INTQ AI")
+st.title("TMT AI")
 
 if 'messages' not in st.session_state:
     st.session_state.messages = []
