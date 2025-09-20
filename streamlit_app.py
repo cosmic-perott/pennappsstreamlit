@@ -7,6 +7,7 @@ def load_icon():
     img = Image.open("INTQ_pfp.png")
     return img
 
+api = st.secrets.API
 st.set_page_config(
     page_title="TMT AI Chat Page",
     page_icon=load_icon(),  
@@ -30,7 +31,7 @@ st.markdown(
 
 
 
-genai.configure(api_key="AIzaSyDY82-5HEFDBdY3P8xXLs72-7VSD6Rp-hM")
+genai.configure(api_key=api)
 generation_config = {
   "temperature": 1,
   "top_p": 0.95,
