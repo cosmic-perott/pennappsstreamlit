@@ -1,5 +1,2 @@
 streamlit
 google-generativeai
-cryptography
-faster-whisper
-yt-dlp
