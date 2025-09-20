@@ -60,7 +60,7 @@ def left_aligned_message(message: str):
     )
 
 
-query_params = st.query_params()
+query_params = st.query_params
 
 fact = query_params.get("fact", [""])[0]
 neutral = query_params.get("neutral", [""])[0]
