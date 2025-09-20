@@ -46,10 +46,10 @@ def left_aligned_message(msg):
     st.markdown(f'<div style="color:#000;text-align:left;padding:10px;border-radius:16px;">{msg}</div>', unsafe_allow_html=True)
 
 query_params = st.query_params
-fact = query_params.get("fact", [""])[0]
-neutral = query_params.get("neutral", [""])[0]
+fact = query_params.get("fact", [""])
+neutral = query_params.get("neutral", [""])
 more = query_params.get("more", [""])[0]
-user_query = query_params.get("query", [""])[0]
+user_query = query_params.get("query", [""])
 
 if "context_data" not in st.session_state:
     st.session_state.context_data = {"fact": fact, "neutral": neutral, "more": more}
