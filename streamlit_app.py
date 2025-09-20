@@ -2,19 +2,13 @@ import streamlit as st
 from PIL import Image
 import google.generativeai as genai
 
-# -------------------------------
-#  ICON LOADER
-# -------------------------------
 
 st.set_page_config(
-    page_title="INTQ AI Chat Page",
+    page_title="TMT AI Chat Page",
     layout="centered",
     initial_sidebar_state="auto"
 )
 
-# -------------------------------
-#  CUSTOM STYLING
-# -------------------------------
 st.markdown(
     """
     <style>
@@ -29,9 +23,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# -------------------------------
-#  GEMINI CONFIG
-# -------------------------------
 api = st.secrets.api
 genai.configure(api_key=api)
 
@@ -56,9 +47,7 @@ chat_session = model.start_chat(
     history=st.session_state.message_history
 )
 
-# -------------------------------
-#  HELPER FUNCTIONS
-# -------------------------------
+
 def right_aligned_message(message: str):
     st.markdown(
         f'<div style="color:#000000; text-align: right; padding:10px; border-radius:16px;">{message}</div>',
@@ -71,9 +60,7 @@ def left_aligned_message(message: str):
         unsafe_allow_html=True
     )
 
-# -------------------------------
-#  READ CONTEXT FROM URL
-# -------------------------------
+
 query_params = st.experimental_get_query_params()
 
 fact = query_params.get("fact", [""])[0]
@@ -84,10 +71,8 @@ user_query = query_params.get("query", [""])[0]
 if "context_data" not in st.session_state:
     st.session_state.context_data = {"fact": fact, "neutral": neutral, "more": more}
 
-# -------------------------------
-#  DISPLAY TITLE + CHAT HISTORY
-# -------------------------------
-st.title("INTQ AI")
+
+st.title("TMT AI")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -99,9 +84,7 @@ for message in st.session_state.messages:
     else:
         st.chat_message(message["role"]).markdown(message["parts"])
 
-# -------------------------------
-#  IF USER QUERY PASSED VIA URL
-# -------------------------------
+
 if user_query and not st.session_state.get("query_loaded"):
     st.session_state.messages.append({"role": "user", "parts": user_query})
     st.session_state.message_history.append({"role": "user", "parts": user_query})
@@ -119,10 +102,8 @@ MORE INFO: {more}
     st.session_state.messages.append({"role": "assistant", "parts": response.text})
     st.session_state.query_loaded = True
 
-# -------------------------------
-#  NORMAL CHAT INPUT
-# -------------------------------
-prompt = st.chat_input("Chat with INTQ")
+
+prompt = st.chat_input("Chat with TMT")
 if prompt:
     right_aligned_message(prompt)
     st.session_state.messages.append({"role": "user", "parts": prompt})
