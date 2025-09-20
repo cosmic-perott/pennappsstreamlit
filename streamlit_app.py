@@ -23,7 +23,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-api = st.secrets.api
+api = st.secrets.API
 genai.configure(api_key=api)
 
 generation_config = {
